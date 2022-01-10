@@ -57,17 +57,18 @@ Qt5Brew = { 'qmake' : '%s/opt/qt@5/bin/qmake' % DefaultHomebrewRoot,
 # The standard installation deploys the tool under $HOME/opt/anaconda3/.
 # If so, you need to make a symbolic link: /Applications/anaconda3 ---> $HOME/opt/anaconda3/
 # [Key Type Name] = 'Qt5Ana3'
-Qt5Ana3 = { 'qmake' : '/Applications/anaconda3/bin/qmake',
-            'deploy': '/Applications/anaconda3/bin/macdeployqt'
+Qt5Ana3 = { 'qmake' : '/Applications/anaconda3/envs/klayout/bin/qmake',
+            'deploy': '/Applications/anaconda3/envs/klayout/bin/macdeployqt'
           }
 
 #-----------------------------------------------------
 # [2] Ruby
 #-----------------------------------------------------
-RubyNil = [ 'nil' ]
-RubySys = [ 'RubyElCapitan', 'RubySierra', 'RubyHighSierra', 'RubyMojave', 'RubyCatalina', 'RubyBigSur' ]
-RubyExt = [ 'Ruby27MacPorts', 'Ruby27Brew', 'RubyAnaconda3' ]
-Rubies  = RubyNil + RubySys + RubyExt
+RubyNil  = [ 'nil' ]
+RubySys  = [ 'RubyElCapitan', 'RubySierra', 'RubyHighSierra', 'RubyMojave' ]
+RubySys += [ 'RubyCatalina', 'RubyBigSur', 'RubyMonterey' ]
+RubyExt  = [ 'Ruby27MacPorts', 'Ruby27Brew', 'RubyAnaconda3' ]
+Rubies   = RubyNil + RubySys + RubyExt
 
 #-----------------------------------------------------
 # Whereabout of different components of Ruby
@@ -135,7 +136,7 @@ RubyCatalina    = { 'exe':  '/System/Library/Frameworks/Ruby.framework/Versions/
                     'lib':  '%s/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/libruby.tbd' % CatalinaSDK
                   }
 
-# Bundled with Big Sur (11.0)
+# Bundled with Big Sur (11.x)
 # Refer to the "Catalina" section above
 # [Key Type Name] = 'Sys'
 BigSurSDK       = "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
@@ -143,6 +144,16 @@ RubyBigSur      = { 'exe':  '/System/Library/Frameworks/Ruby.framework/Versions/
                     'inc':  '%s/System/Library/Frameworks/Ruby.framework/Headers' % BigSurSDK,
                     'inc2': '%s/System/Library/Frameworks/Ruby.framework/Headers/ruby' % BigSurSDK,
                     'lib':  '%s/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/libruby.tbd' % BigSurSDK
+                  }
+
+# Bundled with Monterey (12.x)
+# Refer to the "Catalina" section above
+# [Key Type Name] = 'Sys'
+MontereySDK     = "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+RubyMonterey    = { 'exe':  '/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby',
+                    'inc':  '%s/System/Library/Frameworks/Ruby.framework/Headers' % MontereySDK,
+                    'inc2': '%s/System/Library/Frameworks/Ruby.framework/Headers/ruby' % MontereySDK,
+                    'lib':  '%s/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/libruby.tbd' % MontereySDK
                   }
 
 # Ruby 2.7 from MacPorts (https://www.macports.org/) *+*+*+ EXPERIMENTAL *+*+*+
@@ -166,9 +177,9 @@ Ruby27Brew      = { 'exe': '%s/bin/ruby' % HBRuby27Path,
 # The standard installation deploys the tool under $HOME/opt/anaconda3/.
 # If so, you need to make a symbolic link: /Applications/anaconda3 ---> $HOME/opt/anaconda3/
 # [Key Type Name] = 'Ana3'
-RubyAnaconda3   = { 'exe': '/Applications/anaconda3/bin/ruby',
-                    'inc': '/Applications/anaconda3/include/ruby-2.5.0',
-                    'lib': '/Applications/anaconda3/lib/libruby.2.5.1.dylib'
+RubyAnaconda3   = { 'exe': '/Applications/anaconda3/envs/klayout/bin/ruby',
+                    'inc': '/Applications/anaconda3/envs/klayout/include/ruby-2.7.0',
+                    'lib': '/Applications/anaconda3/envs/klayout/lib/libruby.2.7.dylib'
                   }
 
 # Consolidated dictionary kit for Ruby
@@ -180,6 +191,7 @@ RubyDictionary  = { 'nil'           : None,
                     'RubyMojave'    : RubyMojave,
                     'RubyCatalina'  : RubyCatalina,
                     'RubyBigSur'    : RubyBigSur,
+                    'RubyMonterey'  : RubyMonterey,
                     'Ruby27MacPorts': Ruby27MacPorts,
                     'Ruby27Brew'    : Ruby27Brew,
                     'RubyAnaconda3' : RubyAnaconda3
@@ -188,10 +200,11 @@ RubyDictionary  = { 'nil'           : None,
 #-----------------------------------------------------
 # [3] Python
 #-----------------------------------------------------
-PythonNil = [ 'nil' ]
-PythonSys = [ 'PythonElCapitan', 'PythonSierra', 'PythonHighSierra', 'PythonMojave', 'PythonCatalina', 'PythonBigSur' ]
-PythonExt = [ 'Python38MacPorts', 'Python38Brew', 'PythonAnaconda3', 'PythonAutoBrew' ]
-Pythons   = PythonNil + PythonSys + PythonExt
+PythonNil  = [ 'nil' ]
+PythonSys  = [ 'PythonElCapitan', 'PythonSierra', 'PythonHighSierra', 'PythonMojave' ]
+PythonSys += [ 'PythonCatalina', 'PythonBigSur', 'PythonMonterey' ]
+PythonExt  = [ 'Python38MacPorts', 'Python38Brew', 'PythonAnaconda3', 'PythonAutoBrew' ]
+Pythons    = PythonNil + PythonSys + PythonExt
 
 #-----------------------------------------------------
 # Whereabout of different components of Python
@@ -240,9 +253,22 @@ PythonCatalina  = { 'exe': '/System/Library/Frameworks/Python.framework/Versions
                     'lib': '/System/Library/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib'
                   }
 
-# Bundled with Big Sur (11.0)
+# Bundled with Big Sur (11.x)
+# ** IMPORTANT NOTES **
+#    Xcode [13.1 .. ] does not allow to link the legacy Python 2.7 library not to produce unsupported applications.
+#    This code block remains here to keep the parallelism.
 # [Key Type Name] = 'Sys'
 PythonBigSur    = { 'exe': '/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python',
+                    'inc': '/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7',
+                    'lib': '/System/Library/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib'
+                  }
+
+# Bundled with Monterey (12.x)
+# ** IMPORTANT NOTES **
+#    Xcode [13.1 .. ] does not allow to link the legacy Python 2.7 library not to produce unsupported applications.
+#    This code block remains here to keep the parallelism.
+# [Key Type Name] = 'Sys'
+PythonMonterey  = { 'exe': '/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python',
                     'inc': '/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7',
                     'lib': '/System/Library/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib'
                   }
@@ -268,9 +294,9 @@ Python38Brew    = { 'exe': '%s/Versions/3.8/bin/python3.8' % HBPython38Framework
 # The standard installation deploys the tool under $HOME/opt/anaconda3/.
 # If so, you need to make a symbolic link: /Applications/anaconda3 ---> $HOME/opt/anaconda3/
 # [Key Type Name] = 'Ana3'
-PythonAnaconda3 = { 'exe': '/Applications/anaconda3/bin/python3.8',
-                    'inc': '/Applications/anaconda3/include/python3.8',
-                    'lib': '/Applications/anaconda3/lib/libpython3.8.dylib'
+PythonAnaconda3 = { 'exe': '/Applications/anaconda3/envs/klayout/bin/python3.9',
+                    'inc': '/Applications/anaconda3/envs/klayout/include/python3.9',
+                    'lib': '/Applications/anaconda3/envs/klayout/lib/libpython3.9.dylib'
                   }
 
 # Latest Python from Homebrew *+*+*+ EXPERIMENTAL *+*+*+
@@ -303,6 +329,7 @@ PythonDictionary = { 'nil'             : None,
                      'PythonMojave'    : PythonMojave,
                      'PythonCatalina'  : PythonCatalina,
                      'PythonBigSur'    : PythonBigSur,
+                     'PythonMonterey'  : PythonMonterey,
                      'Python38MacPorts': Python38MacPorts,
                      'Python38Brew'    : Python38Brew,
                      'PythonAnaconda3' : PythonAnaconda3
